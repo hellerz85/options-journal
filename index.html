@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Options Journal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1 class="wordmark">Options <span>Journal</span></h1>
+      <div class="tagline">Trade log &amp; performance ledger</div>
+    </div>
+    <div class="today" id="todayDate"></div>
+  </header>
+
+  <div class="summary" id="summary"></div>
+
+  <div class="toolbar">
+    <div class="filters">
+      <select id="filterStatus">
+        <option value="all">All positions</option>
+        <option value="open">Open</option>
+        <option value="closed">Closed</option>
+      </select>
+      <select id="filterType">
+        <option value="all">All types</option>
+        <option value="Call">Calls</option>
+        <option value="Put">Puts</option>
+      </select>
+      <input type="text" id="filterTicker" placeholder="Filter by ticker...">
+    </div>
+    <button class="btn-primary" id="toggleForm">+ New Entry</button>
+  </div>
+
+  <div class="panel" id="formPanel">
+    <h3>New Position</h3>
+    <div class="grid-form">
+      <div class="field"><label>Ticker</label><input type="text" id="f_ticker" placeholder="SPY"></div>
+      <div class="field"><label>Type</label>
+        <select id="f_type"><option>Call</option><option>Put</option></select>
+      </div>
+      <div class="field"><label>Side</label>
+        <select id="f_side"><option>Long</option><option>Short</option></select>
+      </div>
+      <div class="field"><label>Strategy</label>
+        <select id="f_strategy">
+          <option>Single Leg</option><option>Covered Call</option><option>Cash-Secured Put</option>
+          <option>Vertical Spread</option><option>Iron Condor</option><option>Straddle</option>
+          <option>Strangle</option><option>Calendar</option><option>Other</option>
+        </select>
+      </div>
+      <div class="field"><label>Strike ($)</label><input type="text" id="f_strike" placeholder="450"></div>
+      <div class="field"><label>Expiration</label><input type="text" id="f_exp" placeholder="YYYY-MM-DD"></div>
+      <div class="field"><label>Contracts</label><input type="text" id="f_contracts" placeholder="1"></div>
+      <div class="field"><label>Entry Date</label><input type="text" id="f_entryDate" placeholder="YYYY-MM-DD"></div>
+      <div class="field"><label>Entry Price ($/share)</label><input type="text" id="f_entryPrice" placeholder="2.35"></div>
+      <div class="field"><label>Exit Price (optional)</label><input type="text" id="f_exitPrice" placeholder="leave blank if open"></div>
+      <div class="field"><label>Exit Date (optional)</label><input type="text" id="f_exitDate" placeholder="YYYY-MM-DD"></div>
+      <div class="field span2"><label>Notes</label><textarea id="f_notes" placeholder="Thesis, setup, what happened..."></textarea></div>
+    </div>
+    <div class="panel-actions">
+      <button class="btn-primary" id="saveTrade">Log Trade</button>
+      <button class="btn-ghost" id="cancelForm">Cancel</button>
+    </div>
+  </div>
+
+  <div id="ledgerContainer"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
